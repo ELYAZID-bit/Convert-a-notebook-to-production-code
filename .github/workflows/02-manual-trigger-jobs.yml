@@ -1,0 +1,24 @@
+name: Manually trigger an Azure Machine Learning job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+
+    - name: Submit AML job
+      run:  az configure --defaults workspace workspace_adnane group adnane_student_ressource
+            az ml job create --file Convert-a-notebook-to-production-code/blob/main/src/job.yml
