@@ -21,4 +21,4 @@ jobs:
 
     - name: Submit AML job
       run:  az configure --defaults workspace workspace_adnane group adnane_student_ressource
-            az ml job create --file Convert-a-notebook-to-production-code/blob/main/src/job.yml
+            az ml job create -- main/src/job.yml
