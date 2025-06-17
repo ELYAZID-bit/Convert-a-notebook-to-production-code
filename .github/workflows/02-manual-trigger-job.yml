@@ -20,6 +20,6 @@ jobs:
       run: az extension add -n ml -y
 
     - name: Submit AML job
-      run: |az configure --defaults workspace workspace_adnane group adnane_student_ressource
+      run:  az configure --defaults workspace workspace_adnane group adnane_student_ressource
             az ml job create --file Convert-a-notebook-to-production-code/blob/main/src/job.yml
 
