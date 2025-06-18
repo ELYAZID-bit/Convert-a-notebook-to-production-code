@@ -19,7 +19,8 @@ jobs:
     - name: Install az ml extension
       run: az extension add -n ml -y
 
+    - name: Connect to repo
+      run: az configure --defaults workspace=workspace_adnane group=adnane_student_ressource
+
     - name: Submit AML job
-      run: |
-        az configure --defaults workspace=workspace_adnane group=adnane_student_ressource
-        az ml job create --file src/job.yml
+      run: az ml job create --file src/job.yml
