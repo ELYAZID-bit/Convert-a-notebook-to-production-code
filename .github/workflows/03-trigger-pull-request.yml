@@ -1,3 +1,19 @@
- - name: Placeholder
-      run: |
-        echo "Will add code checks here in next challenge"
+name: Pull Request Code Verification
+
+on:
+  pull_request:
+    branches:
+      - main 
+
+jobs:
+  verify-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Placeholder
+        run: |
+          echo "Will add code checks here in next challenge"
+
