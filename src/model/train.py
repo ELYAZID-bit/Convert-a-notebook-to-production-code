@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 # TO DO: add function to split data
 def split_data(df):
     X, y = df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure','TricepsThickness','SerumInsulin','BMI','DiabetesPedigree','Age']].values, df['Diabetic'].values
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     return X_train, X_test, y_train, y_test
 
 # define functions
@@ -56,7 +56,7 @@ def parse_args():
     parser.add_argument("--training_data", dest='training_data',
                         type=str)
     parser.add_argument("--reg_rate", dest='reg_rate',
-                        type=float, default=0.01)
+                        type=float, default=0.1)
 
     # parse args
     args = parser.parse_args()
