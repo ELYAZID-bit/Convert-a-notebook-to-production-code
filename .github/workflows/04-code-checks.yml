@@ -35,6 +35,6 @@ jobs:
         python -m pip install pytest
     - name: Run  unitests
       run: | 
-        test_train.py src/model/
+        pytest test_train.py
 
 
