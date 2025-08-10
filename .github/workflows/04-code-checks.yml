@@ -1,9 +1,8 @@
 name: Code checks
-
 on:
   pull_request:
     branches:
-      -main
+      - main 
 
 jobs:
   job1:
