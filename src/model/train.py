@@ -25,8 +25,6 @@ def split_data(df):
 def main(args):
     # TO DO: enable autologging
     mlflow.autolog()
-
-
     # read data
     df = get_csvs_df(args.training_data)
     # split data
