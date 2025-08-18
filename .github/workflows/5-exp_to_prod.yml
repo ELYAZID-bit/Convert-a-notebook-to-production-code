@@ -4,10 +4,11 @@ on:
   pull_request:
     branches:
       - main
-      
+
 jobs:
   experiment:
     runs-on: ubuntu-latest
+    environment: workspace_adname_development
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -15,26 +16,26 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
-          
+
       - name: Install az ml extension
         run: az extension add -n ml -y
 
-      - name: Connect to repo
+      - name: Connect to dev workspace
         run: az configure --defaults workspace=workspace_adnane_development group=adnaneelyazid2023-rg
 
       - name: Run experiment job in dev
-        run: |
-          az ml job create --file src/job.yml
-            --stream
+        run: az ml job create --file src/job.yml --stream
 
   production:
     runs-on: ubuntu-latest
+    environment: workspace_adname_production
+    needs: experiment
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -42,20 +43,18 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-         creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
-          
+
       - name: Install az ml extension
         run: az extension add -n ml -y
 
-      - name: Connect to repo
+      - name: Connect to prod workspace
         run: az configure --defaults workspace=workspace_adnane group=adnane_student_ressource
 
-      - name: Run experiment job in dev
-        run: |
-          az ml job create --file src/job.yml
-            --stream
+      - name: Run production job
+        run: az ml job create --file src/job.yml --stream
