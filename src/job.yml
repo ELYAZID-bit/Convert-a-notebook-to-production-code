@@ -15,7 +15,7 @@ inputs:
 
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 
-compute: adnaneelyaz-cluster
+compute: adnane-compute-cluster-1
 
 experiment_name: diabetes-training
 
