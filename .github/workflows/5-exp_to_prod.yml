@@ -27,7 +27,7 @@ jobs:
         run: az extension add -n ml -y
 
       - name: Connect to dev workspace
-        run: az configure --defaults workspace=workspace_adnane_development group=adnaneelyazid2023-rg
+        run: az configure --defaults workspace=workspace_for_dev group=adnane_student_ressource
 
       - name: Run experiment job in dev
         run: az ml job create --file src/job.yml --stream
